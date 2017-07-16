@@ -10,11 +10,6 @@ class Deck extends Component {
       onSwipeRight: () => {},
       onSwipeLeft: () => {},
     }
-    
-    componentWillUpdate() {
-      UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
-      LayoutAnimation.spring();
-    }
 
     constructor(props) {
       super(props);
@@ -40,6 +35,10 @@ class Deck extends Component {
       if (nextProps.data !== this.props.data) {
         this.setState({ index: 0 });
       }
+    }
+    componentWillUpdate() {
+      const nothing = UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+      LayoutAnimation.spring();
     }
      onSwipeComplete(direction) {
       const { onSwipeLeft, onSwipeRight, data } = this.props;
